@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import FloatingMenu from "./components/FloatingMenu";
+import HeaderMenu from "./components/HeaderMenu";
 
 class App extends Component {
   render() {
-    return <div className="App">Hello-Worold</div>;
+    return (
+      <div>
+        <HeaderMenu />
+        <FloatingMenu />
+      </div>
+    );
   }
 }
 
