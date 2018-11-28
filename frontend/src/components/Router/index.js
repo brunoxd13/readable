@@ -1,14 +1,16 @@
 import React from "react";
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import PostList from "../PostList";
+import PostView from "../PostView";
 
 const Router = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={() => <PostList />} />
+      <Route exact path="/" component={PostList} />
+      <Route exact path="/:category/:id" component={PostView} />
       <Route component={() => <Redirect to={{ pathname: "/" }} />} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default Router;

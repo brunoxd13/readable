@@ -6,7 +6,7 @@ import "./styles.css";
 
 class Post extends Component {
   render() {
-    const { post } = this.props;
+    const { post, isOnly } = this.props;
 
     return (
       <div className="group-container">
@@ -28,9 +28,7 @@ class Post extends Component {
               </Item.Meta>
 
               <Item.Description>
-                {!this.props.isOnly
-                  ? truncateString(post.body, 200)
-                  : post.body}
+                {!isOnly ? truncateString(post.body, 200) : post.body}
               </Item.Description>
 
               <Label>{post.category}</Label>
@@ -44,7 +42,7 @@ class Post extends Component {
                   <Button icon="thumbs down outline" />
                 </Button.Group>
 
-                {!this.props.isOnly && (
+                {!isOnly && (
                   <Button secondary floated="right">
                     Continue Reading
                     <Icon name="right chevron" />
