@@ -10,6 +10,7 @@ export default class FloatingMenu extends Component {
 
   render() {
     const { activeItem } = this.state;
+    const { categories } = this.props;
 
     return (
       <div className="menu-vertical-container">
@@ -22,27 +23,16 @@ export default class FloatingMenu extends Component {
             Categories
             <Icon name="grid layout" />
             <Menu.Menu>
-              <Menu.Item
-                name="search"
-                active={activeItem === "search"}
-                onClick={this.handleItemClick}
-              >
-                Search
-              </Menu.Item>
-              <Menu.Item
-                name="add"
-                active={activeItem === "add"}
-                onClick={this.handleItemClick}
-              >
-                Add
-              </Menu.Item>
-              <Menu.Item
-                name="about"
-                active={activeItem === "about"}
-                onClick={this.handleItemClick}
-              >
-                Remove
-              </Menu.Item>
+              {Object.values(categories).map(category => (
+                <Menu.Item
+                  key={category.path}
+                  name={category.path}
+                  active={activeItem === category.path}
+                  onClick={this.handleItemClick}
+                >
+                  {category.name}
+                </Menu.Item>
+              ))}
             </Menu.Menu>
           </Menu.Item>
         </Menu>
