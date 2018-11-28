@@ -19,7 +19,9 @@ class App extends Component {
       <div>
         <HeaderMenu />
         <div className="content-container">
-          <FloatingMenu categories={this.props.categories} />
+          <div className="floating-menu-container">
+            <FloatingMenu categories={this.props.categories} />
+          </div>
 
           <div className="post-list-container">
             <Router />
