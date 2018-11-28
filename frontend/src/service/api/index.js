@@ -67,8 +67,8 @@ export const updatePost = ({ title, body, category, author, id }) => {
   }).then(res => res.json());
 };
 
-export const upvote = (id, entity = "post") => vote(id, "upVote", entity);
-export const downvote = (id, entity = "post") => vote(id, "downVote", entity);
+export const upVote = (id, entity = "post") => vote(id, "upVote", entity);
+export const downVote = (id, entity = "post") => vote(id, "downVote", entity);
 
 const vote = (id, option, entity) =>
   fetch(`${api}/${entity}s/${id}`, {
