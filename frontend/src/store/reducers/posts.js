@@ -1,6 +1,6 @@
 import { RECIVE_POSTS } from "../actions/post";
 
-export default function post(state = {}, action) {
+export default function posts(state = {}, action) {
   switch (action.type) {
     case RECIVE_POSTS:
       return {
