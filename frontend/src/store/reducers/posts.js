@@ -1,4 +1,4 @@
-import { RECIVE_POSTS } from "../actions/post";
+import { RECIVE_POSTS } from "../actions/posts";
 
 export default function posts(state = {}, action) {
   switch (action.type) {

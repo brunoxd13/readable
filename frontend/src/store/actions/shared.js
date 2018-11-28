@@ -1,6 +1,6 @@
 import { getInitialData } from "../../service/api";
 import { reciveCategories } from "./categories";
-import { recivePosts } from "./post";
+import { recivePosts } from "./posts";
 
 export function handleInitialData() {
   return dispatch => {
