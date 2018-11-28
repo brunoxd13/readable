@@ -1,0 +1,9 @@
+.content-container {
+  margin: 15px;
+  display: flex;
+}
+
+.post-list-container {
+  margin-left: 15px;
+  width: 100%;
+}
