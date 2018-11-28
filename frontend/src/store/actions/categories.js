@@ -1,10 +1,10 @@
 import * as Api from "../../service/api";
 
-export const GET_CATEGORIES = "GET_CATEGORIES";
+export const RECIVE_CATEGORIES = "RECIVE_CATEGORIES";
 
-export function getCategories(categories) {
+export function reciveCategories(categories) {
   return {
-    type: GET_CATEGORIES,
+    type: RECIVE_CATEGORIES,
     categories
   };
 }
@@ -12,7 +12,7 @@ export function getCategories(categories) {
 export const fetchCategories = () => {
   return dispatch => {
     return Api.getCategories().then(categories =>
-      dispatch(getCategories(categories))
+      dispatch(reciveCategories(categories))
     );
   };
 };
