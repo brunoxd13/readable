@@ -7,7 +7,7 @@ import "./styles.css";
 class PostList extends Component {
   render() {
     return Object.values(this.props.posts).map(post => {
-      return <Post post={post} isOnly={false} />;
+      return <Post key={post.id} post={post} isOnly={false} />;
     });
   }
 }
