@@ -120,3 +120,12 @@ export const deleteComment = commentId =>
     method: "DELETE",
     headers
   }).then(res => res.json());
+
+export function getInitialData() {
+  return Promise.all([getCategories(), getPosts()]).then(
+    ([categories, posts]) => ({
+      categories,
+      posts
+    })
+  );
+}

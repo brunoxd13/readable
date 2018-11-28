@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import { fetchCategories } from "../../store/actions/categories";
+import { handleInitialData } from "../../store/actions/shared";
 
 import FloatingMenu from "../../components/FloatingMenu";
 import HeaderMenu from "../../components/HeaderMenu";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchCategories());
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
@@ -20,9 +20,10 @@ class App extends Component {
     );
   }
 }
-function mapStateToProps({ categories }) {
+function mapStateToProps({ categories, posts }) {
   return {
-    categories: categories
+    categories: categories,
+    posts: posts
   };
 }
 
