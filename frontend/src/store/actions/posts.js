@@ -1,9 +1,11 @@
 import * as Api from "../../service/api";
+import { arrayToObject } from "../../service/utils";
 
 export const RECIVE_POSTS = "RECIVE_POSTS";
 export const VOTE_POST = "VOTE_POST";
 
 export function recivePosts(posts) {
+  posts = arrayToObject(posts);
   return {
     type: RECIVE_POSTS,
     posts
@@ -12,7 +14,9 @@ export function recivePosts(posts) {
 
 export const fetchPosts = () => {
   return dispatch => {
-    return Api.getPosts().then(posts => dispatch(recivePosts(posts)));
+    return Api.getPosts().then(posts => {
+      dispatch(recivePosts(posts));
+    });
   };
 };
 
@@ -35,8 +39,7 @@ export function handleVotePost(id, option) {
     }
 
     vote(id).then(() => {
-      dispatch(votePost(id, option));
-      return dispatch(fetchPosts());
+      return dispatch(votePost(id, option));
     });
   };
 }

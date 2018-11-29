@@ -12,3 +12,10 @@ export const truncateString = (string, length) => {
     .trim()
     .concat("...");
 };
+
+export const arrayToObject = array => {
+  return array.reduce((objects, current) => {
+    objects[current.id] = current;
+    return objects;
+  }, {});
+};
