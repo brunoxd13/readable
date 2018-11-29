@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Input, Menu } from "semantic-ui-react";
+import { Button, Icon, Input, Menu } from "semantic-ui-react";
 
 export default class FloatingMenu extends Component {
   state = {};
@@ -11,28 +11,34 @@ export default class FloatingMenu extends Component {
     const { categories } = this.props;
 
     return (
-      <Menu vertical>
-        <Menu.Item>
-          <Input placeholder="Search..." />
-        </Menu.Item>
+      <>
+        <Menu vertical>
+          <Menu.Item>
+            <Input placeholder="Search..." />
+          </Menu.Item>
 
-        <Menu.Item>
-          Categories
-          <Icon name="grid layout" />
-          <Menu.Menu>
-            {Object.values(categories).map(category => (
-              <Menu.Item
-                key={category.path}
-                name={category.path}
-                active={activeItem === category.path}
-                onClick={this.handleItemClick}
-              >
-                {category.name}
-              </Menu.Item>
-            ))}
-          </Menu.Menu>
-        </Menu.Item>
-      </Menu>
+          <Menu.Item>
+            Categories
+            <Icon name="grid layout" />
+            <Menu.Menu>
+              {Object.values(categories).map(category => (
+                <Menu.Item
+                  key={category.path}
+                  name={category.path}
+                  active={activeItem === category.path}
+                  onClick={this.handleItemClick}
+                >
+                  {category.name}
+                </Menu.Item>
+              ))}
+            </Menu.Menu>
+          </Menu.Item>
+        </Menu>
+
+        <Button fluid inverted color="blue">
+          New Post
+        </Button>
+      </>
     );
   }
 }
