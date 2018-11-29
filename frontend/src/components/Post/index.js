@@ -51,19 +51,21 @@ class Post extends Component {
               <Item.Extra>
                 <Button.Group>
                   <Button
-                    icon="thumbs up outline"
+                    icon="thumbs up"
+                    color="teal"
                     onClick={this.handleClickUpVote}
                   />
                   <Button.Or text={post.voteScore} />
                   <Button
-                    icon="thumbs down outline"
+                    icon="thumbs down"
+                    color="red"
                     onClick={this.handleClickDownVote}
                   />
                 </Button.Group>
 
                 {!isOnly && (
                   <Link to={`/${post.category}/${post.id}`}>
-                    <Button secondary floated="right">
+                    <Button inverted color="blue" floated="right">
                       Continue Reading
                       <Icon name="right chevron" />
                     </Button>

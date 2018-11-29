@@ -4,8 +4,9 @@
 }
 
 .post-list-container {
-  margin-left: 15px;
-  width: 100%;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .floating-menu-container {
