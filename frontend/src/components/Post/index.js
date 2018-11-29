@@ -23,18 +23,17 @@ class Post extends Component {
       <Segment>
         <Item key={post.id}>
           <Item.Content>
-            <Item.Header as="a">
+            <Item.Header>
               <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
             </Item.Header>
 
             <Item.Meta>
-              <span>
-                <Icon name="user circle" />
+              <span className="icon-user">
+                <Icon name="user outline" />
                 {post.author}
               </span>
-
               <span>
-                <Icon name="comment" />
+                <Icon name="comment outline" />
                 {post.commentCount}
               </span>
             </Item.Meta>
