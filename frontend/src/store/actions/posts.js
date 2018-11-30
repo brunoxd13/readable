@@ -30,15 +30,7 @@ export function votePost(id, option) {
 
 export function handleVotePost(id, option) {
   return dispatch => {
-    let vote = () => {};
-
-    if (option === "upVote") {
-      vote = Api.upVote;
-    } else {
-      vote = Api.downVote;
-    }
-
-    vote(id).then(() => {
+    Api[option](id).then(() => {
       return dispatch(votePost(id, option));
     });
   };
