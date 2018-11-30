@@ -1,32 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-
-import { handleComments } from "../../store/actions/comments";
+import React from "react";
 import { Feed } from "semantic-ui-react";
 import Comment from "../Comment";
 
-class CommentList extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleComments(this.props.postId));
-  }
+const CommentList = ({ comments }) => (
+  <Feed>
+    <h3>Comments</h3>
 
-  render() {
-    return (
-      <Feed>
-        <h2>Comments</h2>
+    {Object.values(comments).map(comment => (
+      <Comment key={comment.id} comment={comment} />
+    ))}
+  </Feed>
+);
 
-        {Object.values(this.props.comments).map(comment => (
-          <Comment key={comment.id} comment={comment} />
-        ))}
-      </Feed>
-    );
-  }
-}
-
-function mapStateToProps({ comments }) {
-  return {
-    comments: comments
-  };
-}
-
-export default connect(mapStateToProps)(CommentList);
+export default CommentList;

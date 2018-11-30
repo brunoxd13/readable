@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import Post from "../Post";
-import CommentList from "../CommentList";
+import NewComment from "../NewComment";
+import CommentListProvider from "../CommentListProvider";
 
 class PostView extends Component {
   render() {
@@ -10,7 +12,8 @@ class PostView extends Component {
     return post ? (
       <>
         <Post post={post} isOnly={true} />
-        <CommentList postId={post.id} />
+        <NewComment />
+        <CommentListProvider postId={post.id} />
       </>
     ) : null;
   }
