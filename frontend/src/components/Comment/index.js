@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleVoteComment } from "../../store/actions/comments";
-import { Feed, Button, Segment, Divider, Icon } from "semantic-ui-react";
+import { Feed, Button, Icon } from "semantic-ui-react";
 
 class Comment extends Component {
   handleClickUpVote = () => {
@@ -16,7 +16,6 @@ class Comment extends Component {
     const { comment } = this.props;
 
     return (
-      // <Segment>
       <Feed.Event>
         <Feed.Label>
           <Icon name="comments outline" />
@@ -28,7 +27,6 @@ class Comment extends Component {
           </Feed.Summary>
 
           <Feed.Extra text>{comment.body}</Feed.Extra>
-          {/* <Divider /> */}
           <Feed.Meta>
             <Button.Group size="mini">
               <Button
@@ -46,7 +44,6 @@ class Comment extends Component {
           </Feed.Meta>
         </Feed.Content>
       </Feed.Event>
-      // </Segment>
     );
   }
 }
