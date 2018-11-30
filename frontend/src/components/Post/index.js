@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Icon, Divider, Item, Label, Segment } from "semantic-ui-react";
+import { Button, Icon, Item, Segment, Grid, Menu } from "semantic-ui-react";
+
 import { truncateString } from "../../service/utils";
 import { Link } from "react-router-dom";
 import { handleVotePost } from "../../store/actions/posts";
@@ -21,57 +22,65 @@ class Post extends Component {
 
     return (
       <Segment>
-        <Item key={post.id}>
-          <Item.Content>
-            <Item.Header>
-              <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
-            </Item.Header>
-
-            <Item.Meta>
-              <span className="icon-user">
-                <Icon name="user outline" />
-                {post.author}
-              </span>
-              <span>
-                <Icon name="comment outline" />
-                {post.commentCount}
-              </span>
-            </Item.Meta>
-
-            <Item.Description>
-              {!isOnly ? truncateString(post.body, 200) : post.body}
-            </Item.Description>
-
-            <Label>{post.category}</Label>
-
-            <Divider />
-
-            <Item.Extra>
-              <Button.Group>
-                <Button
-                  icon="thumbs up"
-                  color="teal"
-                  onClick={this.handleClickUpVote}
-                />
-                <Button.Or text={post.voteScore} />
-                <Button
-                  icon="thumbs down"
-                  color="red"
-                  onClick={this.handleClickDownVote}
-                />
-              </Button.Group>
-
-              {!isOnly && (
+        <Grid.Column>
+          <Item key={post.id}>
+            <Item.Content>
+              <Item.Header>
                 <Link to={`/${post.category}/${post.id}`}>
-                  <Button inverted color="blue" floated="right">
-                    Continue Reading
-                    <Icon name="right chevron" />
-                  </Button>
+                  <h2>{post.title}</h2>
                 </Link>
-              )}
-            </Item.Extra>
-          </Item.Content>
-        </Item>
+              </Item.Header>
+              <Item.Meta>
+                <span className="icon">
+                  <Icon name="user outline" />
+                  {post.author}
+                </span>
+
+                {!isOnly && (
+                  <span className="icon">
+                    <Icon name="comment outline" />
+                    {post.commentCount}
+                  </span>
+                )}
+              </Item.Meta>
+
+              <Item.Description>
+                <span className="icon">
+                  <Icon name="tag" />
+                  {post.category}
+                </span>
+
+                <p className="post-body">{isOnly && post.body}</p>
+              </Item.Description>
+
+              <Item.Extra>
+                <Menu secondary>
+                  <Menu.Item position="left">
+                    <p className="post-body">
+                      {!isOnly && truncateString(post.body, 75)}
+                    </p>
+                  </Menu.Item>
+
+                  <Menu.Item position="right">
+                    <Button.Group>
+                      <Button
+                        icon="thumbs up"
+                        color="teal"
+                        onClick={this.handleClickUpVote}
+                      />
+                      <Button.Or text={post.voteScore} />
+                      <Button
+                        icon="thumbs down"
+                        color="red"
+                        onClick={this.handleClickDownVote}
+                      />
+                    </Button.Group>
+                  </Menu.Item>
+                </Menu>
+              </Item.Extra>
+            </Item.Content>
+          </Item>
+        </Grid.Column>
       </Segment>
     );
   }

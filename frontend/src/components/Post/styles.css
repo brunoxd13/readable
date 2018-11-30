@@ -1,3 +1,10 @@
-.icon-user {
+.icon {
   margin-right: 10px;
+}
+
+.post-body {
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: serif;
+  text-align: justify;
 }
