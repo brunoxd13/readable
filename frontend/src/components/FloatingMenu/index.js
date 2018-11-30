@@ -36,7 +36,7 @@ export default class FloatingMenu extends Component {
         </Menu>
 
         <Button fluid inverted color="blue">
-          New Post
+          New Post <Icon name="file alternate outline" />
         </Button>
       </>
     );
