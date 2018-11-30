@@ -1,21 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-
+import React from "react";
 import Post from "../Post";
-import "./styles.css";
 
-class PostList extends Component {
-  render() {
-    return Object.values(this.props.posts).map(post => {
-      return <Post key={post.id} post={post} isOnly={false} />;
-    });
-  }
-}
+const PostList = ({ posts }) =>
+  Object.values(posts).map(post => {
+    return <Post key={post.id} post={post} isOnly={false} />;
+  });
 
-function mapStateToProps({ posts }) {
-  return {
-    posts: posts
-  };
-}
-
-export default connect(mapStateToProps)(PostList);
+export default PostList;

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Header, Icon } from "semantic-ui-react";
 
 import { handleComments } from "../../store/actions/comments";
 import CommentList from "../CommentList";
-
-import { Header, Icon } from "semantic-ui-react";
 
 class CommentListContainer extends Component {
   componentDidMount() {
