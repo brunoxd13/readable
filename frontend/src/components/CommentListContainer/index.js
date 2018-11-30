@@ -6,7 +6,7 @@ import CommentList from "../CommentList";
 
 import { Header, Icon } from "semantic-ui-react";
 
-class CommentListProvider extends Component {
+class CommentListContainer extends Component {
   componentDidMount() {
     this.props.dispatch(handleComments(this.props.postId));
   }
@@ -34,4 +34,4 @@ function mapStateToProps({ comments }) {
   };
 }
 
-export default connect(mapStateToProps)(CommentListProvider);
+export default connect(mapStateToProps)(CommentListContainer);
