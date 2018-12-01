@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { handleNewComment } from "../../store/actions/comments";
+import { handleAddComment } from "../../store/actions/comments";
 
 import { Form, TextArea } from "semantic-ui-react";
 
@@ -23,7 +23,7 @@ class NewComment extends Component {
       parentId: this.props.postId
     };
 
-    this.props.dispatch(handleNewComment(comment));
+    this.props.dispatch(handleAddComment(comment));
     this.setState({ body: "" });
   };
 

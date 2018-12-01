@@ -1,4 +1,9 @@
-import { RECIVE_POSTS, VOTE_POST, ADD_COMMENT_COUNT } from "../actions/posts";
+import {
+  RECIVE_POSTS,
+  VOTE_POST,
+  ADD_COMMENT_COUNT,
+  DELTE_COMMENT_COUNT
+} from "../actions/posts";
 
 export default function posts(state = {}, action) {
   switch (action.type) {
@@ -25,6 +30,15 @@ export default function posts(state = {}, action) {
         [action.id]: {
           ...state[action.id],
           commentCount: state[action.id].commentCount + 1
+        }
+      };
+
+    case DELTE_COMMENT_COUNT:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          commentCount: state[action.id].commentCount - 1
         }
       };
 
