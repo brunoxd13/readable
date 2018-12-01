@@ -12,7 +12,7 @@ class PostView extends Component {
     return post ? (
       <>
         <Post post={post} isOnly={true} />
-        <NewComment />
+        <NewComment postId={post.id} />
         <CommentListContainer postId={post.id} />
       </>
     ) : null;

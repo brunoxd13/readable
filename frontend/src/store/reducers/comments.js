@@ -1,4 +1,8 @@
-import { RECIVE_COMMENTS, VOTE_COMMENT } from "../actions/comments";
+import {
+  RECIVE_COMMENTS,
+  VOTE_COMMENT,
+  ADD_COMMENT
+} from "../actions/comments";
 
 export default function comments(state = {}, action) {
   switch (action.type) {
@@ -16,6 +20,14 @@ export default function comments(state = {}, action) {
             action.option === "upVote"
               ? state[action.id].voteScore + 1
               : state[action.id].voteScore - 1
+        }
+      };
+
+    case ADD_COMMENT:
+      return {
+        ...state,
+        [action.comment.id]: {
+          ...action.comment
         }
       };
 
