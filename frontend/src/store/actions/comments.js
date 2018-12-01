@@ -6,6 +6,7 @@ export const RECIVE_COMMENTS = "RECIVE_COMMENTS";
 export const VOTE_COMMENT = "VOTE_COMMENT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
 
 export function reciveComments(comments) {
   comments = arrayToObject(comments);
@@ -73,6 +74,22 @@ export function handleDeleteComment(id, postId) {
     Api.deleteComment(id).then(() => {
       dispatch(deleteComment(id));
       return dispatch(deleteCommentCounter(postId));
+    });
+  };
+}
+
+export function editComment(id, body) {
+  return {
+    type: EDIT_COMMENT,
+    id,
+    body
+  };
+}
+
+export function handleEditComment(id, body) {
+  return dispatch => {
+    Api.updateComment(id, body).then(() => {
+      dispatch(editComment(id, body));
     });
   };
 }

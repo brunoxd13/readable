@@ -77,11 +77,11 @@ const vote = (id, option, entity) =>
     body: JSON.stringify({ option })
   }).then(res => res.json());
 
-export const updateComment = ({ id, title, body, author }) => {
+export const updateComment = (id, body) => {
   return fetch(`${api}/comments/${id}`, {
     method: "PUT",
     headers: writeHeaders,
-    body: JSON.stringify({ id, title, body, author })
+    body: JSON.stringify({ id, body })
   }).then(res => res.json());
 };
 

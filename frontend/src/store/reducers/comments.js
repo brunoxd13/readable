@@ -2,7 +2,8 @@ import {
   RECIVE_COMMENTS,
   VOTE_COMMENT,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  EDIT_COMMENT
 } from "../actions/comments";
 
 export default function comments(state = {}, action) {
@@ -40,6 +41,16 @@ export default function comments(state = {}, action) {
           deleted: true
         }
       };
+
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          body: action.body
+        }
+      };
+
     default:
       return state;
   }
