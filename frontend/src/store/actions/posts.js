@@ -3,8 +3,8 @@ import { arrayToObject } from "../../service/utils";
 
 export const RECIVE_POSTS = "RECIVE_POSTS";
 export const VOTE_POST = "VOTE_POST";
-export const ADD_COMMENT_COUNT = "ADD_COMMENT_COUNT";
-export const DELTE_COMMENT_COUNT = "DELTE_COMMENT_COUNT";
+export const INCREASE_COMMENT_COUNT = "INCREASE_COMMENT_COUNT";
+export const DEINCREASE_COMMENT_COUNT = "DEINCREASE_COMMENT_COUNT";
 
 export function recivePosts(posts) {
   posts = arrayToObject(posts);
@@ -38,16 +38,16 @@ export function handleVotePost(id, option) {
   };
 }
 
-export function addCommentCounter(id) {
+export function increaseCommentCounter(id) {
   return {
-    type: ADD_COMMENT_COUNT,
+    type: INCREASE_COMMENT_COUNT,
     id
   };
 }
 
-export function deleteCommentCounter(id) {
+export function deincreaseCommentCounter(id) {
   return {
-    type: DELTE_COMMENT_COUNT,
+    type: DEINCREASE_COMMENT_COUNT,
     id
   };
 }

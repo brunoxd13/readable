@@ -1,6 +1,6 @@
 import * as Api from "../../service/api";
 import { arrayToObject } from "../../service/utils";
-import { addCommentCounter, deleteCommentCounter } from "./posts";
+import { increaseCommentCounter, deincreaseCommentCounter } from "./posts";
 
 export const RECIVE_COMMENTS = "RECIVE_COMMENTS";
 export const VOTE_COMMENT = "VOTE_COMMENT";
@@ -57,7 +57,7 @@ export function handleAddComment(comment) {
       })
     ).then(() => {
       dispatch(addComment(comment));
-      return dispatch(addCommentCounter(comment.parentId));
+      return dispatch(increaseCommentCounter(comment.parentId));
     });
   };
 }
@@ -73,7 +73,7 @@ export function handleDeleteComment(id, postId) {
   return dispatch => {
     Api.deleteComment(id).then(() => {
       dispatch(deleteComment(id));
-      return dispatch(deleteCommentCounter(postId));
+      return dispatch(deincreaseCommentCounter(postId));
     });
   };
 }

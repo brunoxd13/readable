@@ -1,8 +1,8 @@
 import {
   RECIVE_POSTS,
   VOTE_POST,
-  ADD_COMMENT_COUNT,
-  DELTE_COMMENT_COUNT
+  INCREASE_COMMENT_COUNT,
+  DEINCREASE_COMMENT_COUNT
 } from "../actions/posts";
 
 export default function posts(state = {}, action) {
@@ -24,7 +24,7 @@ export default function posts(state = {}, action) {
               : state[action.id].voteScore - 1
         }
       };
-    case ADD_COMMENT_COUNT:
+    case INCREASE_COMMENT_COUNT:
       return {
         ...state,
         [action.id]: {
@@ -33,7 +33,7 @@ export default function posts(state = {}, action) {
         }
       };
 
-    case DELTE_COMMENT_COUNT:
+    case DEINCREASE_COMMENT_COUNT:
       return {
         ...state,
         [action.id]: {
