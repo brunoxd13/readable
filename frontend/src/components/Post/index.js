@@ -30,18 +30,17 @@ class Post extends Component {
                   <h2>{post.title}</h2>
                 </Link>
               </Item.Header>
+
               <Item.Meta>
                 <span className="icon">
                   <Icon name="user outline" />
                   {post.author}
                 </span>
 
-                {!isOnly && (
-                  <span className="icon">
-                    <Icon name="comment outline" />
-                    {post.commentCount}
-                  </span>
-                )}
+                <span className="icon">
+                  <Icon name="comment outline" />
+                  {post.commentCount}
+                </span>
               </Item.Meta>
 
               <Item.Description>
