@@ -29,7 +29,9 @@ class CommentListContainer extends Component {
 
 function mapStateToProps({ comments }) {
   return {
-    comments: comments
+    comments: Object.values(comments).filter(comment => {
+      return comment.deleted === false;
+    })
   };
 }
 

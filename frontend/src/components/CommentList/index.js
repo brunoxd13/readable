@@ -6,12 +6,9 @@ const CommentList = ({ comments }) => (
   <Feed>
     <h3>Comments</h3>
 
-    {Object.values(comments).map(
-      comment =>
-        comment.deleted === false && (
-          <Comment key={comment.id} comment={comment} />
-        )
-    )}
+    {Object.values(comments).map(comment => (
+      <Comment key={comment.id} comment={comment} />
+    ))}
   </Feed>
 );
 
