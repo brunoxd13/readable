@@ -5,15 +5,7 @@ import {
   handleDeleteComment,
   handleEditComment
 } from "../../store/actions/comments";
-import {
-  Feed,
-  Button,
-  Icon,
-  Menu,
-  Grid,
-  Form,
-  TextArea
-} from "semantic-ui-react";
+import { Feed, Button, Icon, Grid, Form, TextArea } from "semantic-ui-react";
 
 import "./style.css";
 
