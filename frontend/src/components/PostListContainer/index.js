@@ -22,11 +22,13 @@ class PostListContainer extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts }, { match }) {
   return {
-    posts: Object.values(posts).filter(post => {
-      return post.deleted === false;
-    })
+    posts: Object.values(posts).filter(
+      post =>
+        post.deleted === false &&
+        (!match.params.category || post.category === match.params.category)
+    )
   };
 }
 
