@@ -81,10 +81,8 @@ class Comment extends Component {
           )}
 
           <div className="group-btn">
-            <Grid columns={11}>
-              {/* <Menu secondary> */}
-              {/* <Menu.Item position="left"> */}
-              <Grid.Column floated="left">
+            <Grid>
+              <Grid.Column width={8} floated="left">
                 <Button.Group size="mini">
                   <Button
                     icon="thumbs up"
@@ -99,17 +97,15 @@ class Comment extends Component {
                   />
                 </Button.Group>
               </Grid.Column>
-              {/* </Menu.Item> */}
 
-              {/* <Menu.Item position="right"> */}
-              <Grid.Column floated="right">
+              <Grid.Column width={8} floated="right">
                 {this.state.isEditing ? (
                   <Button.Group basic size="mini" floated="right">
                     <Button onClick={this.handleSaveEditComment}>Save</Button>
                     <Button onClick={this.handleEditComment}>Cancel</Button>
                   </Button.Group>
                 ) : (
-                  <Button.Group basic size="mini">
+                  <Button.Group basic size="mini" floated="right">
                     <Button
                       icon="edit outline"
                       onClick={this.handleEditComment}
@@ -121,8 +117,6 @@ class Comment extends Component {
                   </Button.Group>
                 )}
               </Grid.Column>
-              {/* </Menu.Item> */}
-              {/* </Menu> */}
             </Grid>
           </div>
         </Feed.Content>
