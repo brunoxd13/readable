@@ -19,3 +19,9 @@ export const arrayToObject = array => {
     return objects;
   }, {});
 };
+
+export const generateId = () => {
+  return Math.random()
+    .toString(36)
+    .substr(-8);
+};
