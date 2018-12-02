@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Icon, Input, Menu } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 export default class FloatingMenu extends Component {
   state = {};
@@ -35,9 +36,11 @@ export default class FloatingMenu extends Component {
           </Menu.Item>
         </Menu>
 
-        <Button fluid inverted color="blue">
-          New Post <Icon name="file alternate outline" />
-        </Button>
+        <Link to="/new-post">
+          <Button fluid inverted color="blue">
+            New Post
+          </Button>
+        </Link>
       </>
     );
   }
