@@ -3,7 +3,8 @@ import {
   VOTE_POST,
   INCREASE_COMMENT_COUNT,
   DEINCREASE_COMMENT_COUNT,
-  ADD_POST
+  ADD_POST,
+  DELETE_POST
 } from "../actions/posts";
 
 export default function posts(state = {}, action) {
@@ -25,6 +26,7 @@ export default function posts(state = {}, action) {
               : state[action.id].voteScore - 1
         }
       };
+
     case INCREASE_COMMENT_COUNT:
       return {
         ...state,
@@ -46,7 +48,18 @@ export default function posts(state = {}, action) {
     case ADD_POST:
       return {
         ...state,
-        ...[action.post]
+        [action.post.id]: {
+          ...action.post
+        }
+      };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          deleted: true
+        }
       };
 
     default:

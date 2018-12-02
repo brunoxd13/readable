@@ -6,6 +6,7 @@ export const VOTE_POST = "VOTE_POST";
 export const INCREASE_COMMENT_COUNT = "INCREASE_COMMENT_COUNT";
 export const DEINCREASE_COMMENT_COUNT = "DEINCREASE_COMMENT_COUNT";
 export const ADD_POST = "ADD_POST";
+export const DELETE_POST = "DELETE_POST";
 
 export function recivePosts(posts) {
   posts = arrayToObject(posts);
@@ -61,7 +62,6 @@ export function addPost(post) {
 }
 
 export function handleAddPost(post) {
-  console.log(post);
   return dispatch => {
     Api.createPost(
       Object.assign(post, {
@@ -72,7 +72,22 @@ export function handleAddPost(post) {
         commentCount: 0
       })
     ).then(() => {
-      return addPost(post);
+      return dispatch(addPost(post));
+    });
+  };
+}
+
+export function deletePost(id) {
+  return {
+    type: DELETE_POST,
+    id
+  };
+}
+
+export function handleDeletePost(id) {
+  return dispatch => {
+    Api.deletePost(id).then(() => {
+      return dispatch(deletePost(id));
     });
   };
 }
