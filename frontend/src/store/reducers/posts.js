@@ -4,7 +4,8 @@ import {
   INCREASE_COMMENT_COUNT,
   DEINCREASE_COMMENT_COUNT,
   ADD_POST,
-  DELETE_POST
+  DELETE_POST,
+  UPDATE_POST
 } from "../actions/posts";
 
 export default function posts(state = {}, action) {
@@ -59,6 +60,17 @@ export default function posts(state = {}, action) {
         [action.id]: {
           ...state[action.id],
           deleted: true
+        }
+      };
+
+    case UPDATE_POST:
+      return {
+        ...state,
+        [action.id]: {
+          ...state[action.id],
+          title: action.title,
+          body: action.body,
+          category: action.category
         }
       };
 

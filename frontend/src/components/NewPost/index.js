@@ -8,22 +8,44 @@ import {
   Select,
   Segment
 } from "semantic-ui-react";
-import { handleAddPost } from "../../store/actions/posts";
+import { withRouter } from "react-router-dom";
+
+import { handleAddPost, handleUpdatePost } from "../../store/actions/posts";
 
 class NewPost extends Component {
   state = {
     title: "",
     category: "",
     body: "",
-    author: "guest"
+    author: "guest",
+    isEditing: false
   };
+
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState({
+        id: this.props.location.state.id,
+        title: this.props.location.state.title,
+        category: this.props.location.state.category,
+        body: this.props.location.state.body,
+        isEditing: true
+      });
+    }
+  }
 
   handleFieldChange = (e, { name, value }) => {
     this.setState({ [name]: value });
   };
 
   handleAddPost = () => {
-    this.props.dispatch(handleAddPost(this.state));
+    if (this.state.isEditing) {
+      let { id, title, body, category } = this.state;
+      this.props.dispatch(handleUpdatePost(id, title, body, category));
+    } else {
+      this.props.dispatch(handleAddPost(this.state));
+    }
+
+    this.props.history.push("/");
   };
 
   render() {
@@ -43,6 +65,7 @@ class NewPost extends Component {
             label="Title"
             placeholder="Title"
             onChange={this.handleFieldChange}
+            value={this.state.title}
           />
           <Form.Field
             name="category"
@@ -51,6 +74,7 @@ class NewPost extends Component {
             label="Category"
             placeholder="Category"
             onChange={this.handleFieldChange}
+            value={this.state.category}
           />
           <Form.Field
             autoHeight
@@ -59,6 +83,7 @@ class NewPost extends Component {
             label="Post"
             placeholder="Post"
             onChange={this.handleFieldChange}
+            value={this.state.body}
           />
 
           <Button onClick={this.handleAddPost}>Submit</Button>

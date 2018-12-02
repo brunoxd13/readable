@@ -22,6 +22,13 @@ class Post extends Component {
     this.props.history.push("/");
   };
 
+  handleEditPost = () => {
+    this.props.history.push({
+      pathname: "/new-post",
+      state: this.props.post
+    });
+  };
+
   render() {
     const { post, isOnly } = this.props;
 
@@ -68,6 +75,7 @@ class Post extends Component {
                           icon="edit outline"
                           onClick={this.handleEditPost}
                         />
+
                         <Button
                           icon="trash alternate outline"
                           onClick={this.handleDeletePost}

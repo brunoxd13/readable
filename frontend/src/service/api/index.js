@@ -59,11 +59,11 @@ export const createComment = comment =>
     .then(res => res.json())
     .then(data => data);
 
-export const updatePost = ({ title, body, category, author, id }) => {
+export const updatePost = (id, title, body, category) => {
   return fetch(`${api}/posts/${id}`, {
     method: "PUT",
     headers: writeHeaders,
-    body: JSON.stringify({ title, body, category, author })
+    body: JSON.stringify({ title, body, category })
   }).then(res => res.json());
 };
 

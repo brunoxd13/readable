@@ -7,6 +7,7 @@ export const INCREASE_COMMENT_COUNT = "INCREASE_COMMENT_COUNT";
 export const DEINCREASE_COMMENT_COUNT = "DEINCREASE_COMMENT_COUNT";
 export const ADD_POST = "ADD_POST";
 export const DELETE_POST = "DELETE_POST";
+export const UPDATE_POST = "UPDATE_POST";
 
 export function recivePosts(posts) {
   posts = arrayToObject(posts);
@@ -88,6 +89,24 @@ export function handleDeletePost(id) {
   return dispatch => {
     Api.deletePost(id).then(() => {
       return dispatch(deletePost(id));
+    });
+  };
+}
+
+export function updatePost(id, title, body, category) {
+  return {
+    type: UPDATE_POST,
+    id,
+    title,
+    body,
+    category
+  };
+}
+
+export function handleUpdatePost(id, title, body, category) {
+  return dispatch => {
+    Api.updatePost(id, title, body, category).then(() => {
+      return dispatch(updatePost(id, title, body, category));
     });
   };
 }
