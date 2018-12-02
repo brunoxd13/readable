@@ -65,6 +65,7 @@ class FloatingMenu extends Component {
 
           <Menu.Item>
             Sort By
+            <Icon name="sort amount down" />
             <Menu.Menu>
               <Menu.Item
                 key="newest"
