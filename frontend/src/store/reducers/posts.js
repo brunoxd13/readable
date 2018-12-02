@@ -2,7 +2,8 @@ import {
   RECIVE_POSTS,
   VOTE_POST,
   INCREASE_COMMENT_COUNT,
-  DEINCREASE_COMMENT_COUNT
+  DEINCREASE_COMMENT_COUNT,
+  ADD_POST
 } from "../actions/posts";
 
 export default function posts(state = {}, action) {
@@ -40,6 +41,12 @@ export default function posts(state = {}, action) {
           ...state[action.id],
           commentCount: state[action.id].commentCount - 1
         }
+      };
+
+    case ADD_POST:
+      return {
+        ...state,
+        ...[action.post]
       };
 
     default:
