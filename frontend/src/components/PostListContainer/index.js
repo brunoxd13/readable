@@ -24,7 +24,9 @@ class PostListContainer extends Component {
 
 function mapStateToProps({ posts }) {
   return {
-    posts: posts
+    posts: Object.values(posts).filter(post => {
+      return post.deleted === false;
+    })
   };
 }
 

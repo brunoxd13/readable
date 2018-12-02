@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 import { handleInitialData } from "../../store/actions/shared";
 import { CircleArrow as ScrollUpButton } from "react-scroll-up-button";
