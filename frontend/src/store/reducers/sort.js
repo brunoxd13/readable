@@ -1,6 +1,6 @@
 import { SORT_BY_CATEGORY, SORT_BY } from "../actions/sort";
 
-export default function sort(state = {}, action) {
+export default function sort(state = { orderBy: "newest" }, action) {
   switch (action.type) {
     case SORT_BY_CATEGORY:
       return {

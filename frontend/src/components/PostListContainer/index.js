@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Header, Icon } from "semantic-ui-react";
+import { orderPost } from "../../service/utils";
 
 import PostList from "../PostList";
 
@@ -22,13 +23,17 @@ class PostListContainer extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { match }) {
+function mapStateToProps({ posts, sort }, { match }) {
+  const postsFiltred = Object.values(posts).filter(
+    post =>
+      post.deleted === false &&
+      (!match.params.category || post.category === match.params.category)
+  );
+
+  const postsOrder = orderPost(postsFiltred, sort.orderBy);
+
   return {
-    posts: Object.values(posts).filter(
-      post =>
-        post.deleted === false &&
-        (!match.params.category || post.category === match.params.category)
-    )
+    posts: postsOrder
   };
 }
 

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ReactMarkdown from "react-markdown";
 import { Button, Icon, Item, Segment, Grid } from "semantic-ui-react";
-
-import { truncateString } from "../../service/utils";
 import { Link, withRouter } from "react-router-dom";
+
+import { truncateString, getDateFromTimestamp } from "../../service/utils";
 import { handleVotePost, handleDeletePost } from "../../store/actions/posts";
 
 import "./styles.css";
@@ -52,6 +53,11 @@ class Post extends Component {
                 <Icon name="comment outline" />
                 {post.commentCount}
               </span>
+
+              <span className="icon">
+                <Icon name="calendar alternate outline" />
+                {getDateFromTimestamp(post.timestamp)}
+              </span>
             </Item.Meta>
 
             <Item.Description>
@@ -60,7 +66,9 @@ class Post extends Component {
                 {post.category}
               </span>
 
-              <p className="post-body">{isOnly && post.body}</p>
+              <p className="post-body">
+                {isOnly && <ReactMarkdown source={post.body} />}
+              </p>
             </Item.Description>
 
             <Item.Extra>
