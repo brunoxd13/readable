@@ -18,12 +18,12 @@ class Post extends Component {
     this.props.dispatch(handleVotePost(this.props.post.id, "downVote"));
   };
 
-  handleDeletePost = () => {
+  handleClickDeletePost = () => {
     this.props.dispatch(handleDeletePost(this.props.post.id));
     this.props.history.push("/");
   };
 
-  handleEditPost = () => {
+  handleClickEditPost = () => {
     this.props.history.push({
       pathname: "/new-post",
       state: this.props.post
@@ -66,33 +66,33 @@ class Post extends Component {
                 {post.category}
               </span>
 
-              <p className="post-body">
+              <div className="post-body-container">
                 {isOnly && (
                   <ReactMarkdown escapeHtml={false} source={post.body} />
                 )}
-              </p>
+              </div>
             </Item.Description>
 
             <Item.Extra>
               <Grid>
                 <Grid.Column width={8} floated="left">
-                  <p className="post-body">
+                  <div className="post-body-container">
                     {!isOnly ? (
                       truncateString(post.body, 75)
                     ) : (
                       <Button.Group basic size="mini">
                         <Button
                           icon="edit outline"
-                          onClick={this.handleEditPost}
+                          onClick={this.handleClickEditPost}
                         />
 
                         <Button
                           icon="trash alternate outline"
-                          onClick={this.handleDeletePost}
+                          onClick={this.handleClickDeletePost}
                         />
                       </Button.Group>
                     )}
-                  </p>
+                  </div>
                 </Grid.Column>
 
                 <Grid.Column width={8} floated="right">
