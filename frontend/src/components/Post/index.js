@@ -67,7 +67,9 @@ class Post extends Component {
               </span>
 
               <p className="post-body">
-                {isOnly && <ReactMarkdown source={post.body} />}
+                {isOnly && (
+                  <ReactMarkdown escapeHtml={false} source={post.body} />
+                )}
               </p>
             </Item.Description>
 
