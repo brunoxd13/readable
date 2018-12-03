@@ -7,23 +7,25 @@ import { capitalizeFirstLetter } from "../../service/utils";
 
 class FloatingMenu extends Component {
   state = {
-    activeItem: "all"
+    activeCategory: "all",
+    activeOrder: "newest"
   };
 
   handleItemClick = (e, { name }) => {
-    let type = name.split("-")[0];
+    const type = name.split("-")[0];
     name = name.split("-")[1];
 
     if (type === "category") {
-      this.setState({ activeItem: name });
+      this.setState({ activeCategory: name });
       this.props.dispatch(sortByCategory(name));
     } else {
+      this.setState({ activeOrder: name });
       this.props.dispatch(sortBy(name));
     }
   };
 
   render() {
-    const { activeItem } = this.state;
+    const { activeCategory, activeOrder } = this.state;
     const { categories } = this.props;
 
     return (
@@ -42,7 +44,7 @@ class FloatingMenu extends Component {
                 to={"/"}
                 key={"all"}
                 name={"category-all"}
-                active={activeItem === "all"}
+                active={activeCategory === "all"}
                 onClick={this.handleItemClick}
               >
                 All Posts
@@ -54,7 +56,7 @@ class FloatingMenu extends Component {
                   to={`/${category.path}`}
                   key={category.path}
                   name={`category-${category.path}`}
-                  active={activeItem === category.path}
+                  active={activeCategory === category.path}
                   onClick={this.handleItemClick}
                 >
                   {capitalizeFirstLetter(category.name)}
@@ -71,6 +73,7 @@ class FloatingMenu extends Component {
                 key="newest"
                 name="order-newest"
                 onClick={this.handleItemClick}
+                active={activeOrder === "newest"}
               >
                 Newest
               </Menu.Item>
@@ -78,6 +81,7 @@ class FloatingMenu extends Component {
                 key="oldest"
                 name="order-oldest"
                 onClick={this.handleItemClick}
+                active={activeOrder === "oldest"}
               >
                 Oldest
               </Menu.Item>
@@ -85,13 +89,15 @@ class FloatingMenu extends Component {
                 key="famous"
                 name="order-famous"
                 onClick={this.handleItemClick}
+                active={activeOrder === "famous"}
               >
                 Most Rated
               </Menu.Item>
               <Menu.Item
-                key="infame"
-                name="order-infame"
+                key="infamous"
+                name="order-infamous"
                 onClick={this.handleItemClick}
+                active={activeOrder === "infamous"}
               >
                 Less Rated
               </Menu.Item>
