@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Header, Icon } from "semantic-ui-react";
 
 import Post from "../Post";
 import NewComment from "../NewComment";
@@ -15,7 +16,15 @@ class PostView extends Component {
         <NewComment postId={post.id} />
         <CommentListContainer postId={post.id} />
       </>
-    ) : null;
+    ) : (
+      <Header as="h2" icon textAlign="center">
+        <Icon name="search" circular />
+        <Header.Content>
+          <h1>404</h1>
+          <Header.Subheader>We couldn’t find this page.</Header.Subheader>
+        </Header.Content>
+      </Header>
+    );
   }
 }
 
