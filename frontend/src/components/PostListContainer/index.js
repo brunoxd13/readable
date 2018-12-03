@@ -30,10 +30,8 @@ function mapStateToProps({ posts, sort }, { match }) {
       (!match.params.category || post.category === match.params.category)
   );
 
-  const postsOrder = orderPost(postsFiltred, sort.orderBy);
-
   return {
-    posts: postsOrder
+    posts: orderPost(postsFiltred, sort.orderBy)
   };
 }
 
