@@ -1,5 +1,5 @@
 import * as Api from "../../service/api";
-import { arrayToObject } from "../../service/utils";
+import { arrayToObject, generateId } from "../../service/utils";
 import { increaseCommentCounter, deincreaseCommentCounter } from "./posts";
 
 export const RECIVE_COMMENTS = "RECIVE_COMMENTS";
@@ -51,12 +51,11 @@ export function handleAddComment(comment) {
   return dispatch => {
     Api.createComment(
       Object.assign(comment, {
-        id: Date.now(),
-        timestamp: Date.now(),
-        deleted: false
+        id: generateId(),
+        timestamp: Date.now()
       })
-    ).then(() => {
-      dispatch(addComment(comment));
+    ).then(commentRecived => {
+      dispatch(addComment({ ...comment, ...commentRecived }));
       return dispatch(increaseCommentCounter(comment.parentId));
     });
   };

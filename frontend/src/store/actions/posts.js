@@ -67,13 +67,10 @@ export function handleAddPost(post) {
     Api.createPost(
       Object.assign(post, {
         id: generateId(),
-        timestamp: Date.now(),
-        deleted: false,
-        voteScore: 1,
-        commentCount: 0
+        timestamp: Date.now()
       })
-    ).then(() => {
-      return dispatch(addPost(post));
+    ).then(postRecived => {
+      return dispatch(addPost({ ...post, ...postRecived }));
     });
   };
 }
