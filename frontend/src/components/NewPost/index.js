@@ -17,7 +17,7 @@ class NewPost extends Component {
     title: "",
     category: "",
     body: "",
-    author: "guest",
+    author: this.props.authedUser,
     isEditing: false
   };
 
@@ -109,9 +109,10 @@ class NewPost extends Component {
   }
 }
 
-function mapStateToProps({ categories }) {
+function mapStateToProps({ categories, authedUser }) {
   return {
-    categories: categories
+    categories: categories,
+    authedUser: authedUser
   };
 }
 

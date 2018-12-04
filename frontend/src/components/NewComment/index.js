@@ -9,7 +9,7 @@ import "./styles.css";
 class NewComment extends Component {
   state = {
     body: "",
-    author: "guest"
+    author: this.props.authedUser
   };
 
   handleComment = e => {
@@ -58,4 +58,10 @@ class NewComment extends Component {
   }
 }
 
-export default connect()(NewComment);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser: authedUser
+  };
+}
+
+export default connect(mapStateToProps)(NewComment);
