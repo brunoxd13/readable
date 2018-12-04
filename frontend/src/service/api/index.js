@@ -29,12 +29,6 @@ export const getPosts = category => {
     .then(data => data);
 };
 
-export const getPost = id => {
-  return fetch(`${api}/posts/${id}`, { headers })
-    .then(res => res.json())
-    .then(data => data.posts);
-};
-
 export const getComments = id => {
   return fetch(`${api}/posts/${id}/comments`, { headers })
     .then(res => res.json())
@@ -67,9 +61,6 @@ export const updatePost = (id, title, body, category) => {
   }).then(res => res.json());
 };
 
-export const upVote = (id, entity = "post") => vote(id, "upVote", entity);
-export const downVote = (id, entity = "post") => vote(id, "downVote", entity);
-
 const vote = (id, option, entity) =>
   fetch(`${api}/${entity}s/${id}`, {
     method: "POST",
@@ -77,36 +68,15 @@ const vote = (id, option, entity) =>
     body: JSON.stringify({ option })
   }).then(res => res.json());
 
+export const upVote = (id, entity = "post") => vote(id, "upVote", entity);
+export const downVote = (id, entity = "post") => vote(id, "downVote", entity);
+
 export const updateComment = (id, body) => {
   return fetch(`${api}/comments/${id}`, {
     method: "PUT",
     headers: writeHeaders,
     body: JSON.stringify({ id, body })
   }).then(res => res.json());
-};
-
-export const updateOrCreateComment = comment => {
-  if (comment.id) {
-    return updateComment(comment);
-  }
-
-  return createComment({
-    ...comment,
-    id: token,
-    timestamp: Date.now()
-  });
-};
-
-export const updateOrCreatePost = post => {
-  if (post.id) {
-    return updatePost(post);
-  }
-
-  return createPost({
-    ...post,
-    id: token,
-    timestamp: Date.now()
-  });
 };
 
 export const deletePost = id =>
