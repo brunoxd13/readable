@@ -10,7 +10,7 @@ This is the second graduation project for the [React Nanodegree Program](https:/
 Readable is a project thats is like a personal blog, its main features are: allowing users to post content in pre-defined categories, comment on their own posts and those of other users, and vote on posts and comments. Users can edit and delete posts and comments.
 
 ## Demo
-<a href="http://my-reads-bruno.herokuapp.com"><strong>🎮 Play with the demo</strong></a>
+<a href="http://bruno-readable.surge.sh/"><strong>🎮 Play with the demo</strong></a>
 
 ## Getting Started
 
