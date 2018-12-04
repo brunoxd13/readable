@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Icon, Input, Menu } from "semantic-ui-react";
-import { sortBy, sortByCategory } from "../../store/actions/sort";
+import { sortBy } from "../../store/actions/sort";
 import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../service/utils";
 
@@ -17,7 +17,6 @@ class FloatingMenu extends Component {
 
     if (type === "category") {
       this.setState({ activeCategory: name });
-      this.props.dispatch(sortByCategory(name));
     } else {
       this.setState({ activeOrder: name });
       this.props.dispatch(sortBy(name));
