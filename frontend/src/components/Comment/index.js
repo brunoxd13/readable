@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Feed, Button, Icon, Grid, Form, TextArea } from "semantic-ui-react";
+import { getDateFromTimestamp } from "../../service/utils";
 import {
   handleVoteComment,
   handleDeleteComment,
   handleEditComment
 } from "../../store/actions/comments";
-import { Feed, Button, Icon, Grid, Form, TextArea } from "semantic-ui-react";
 
 import "./style.css";
 
@@ -51,25 +52,22 @@ class Comment extends Component {
 
   render() {
     const { comment, authedUser } = this.props;
-
+    const { isEditing, newComment } = this.state;
     return (
       <Feed.Event>
         <Feed.Label>
           <Icon name="comments outline" />
         </Feed.Label>
         <Feed.Content>
-          <Feed.Date>1 Hour Ago</Feed.Date>
+          <Feed.Date>{getDateFromTimestamp(comment.timestamp)}</Feed.Date>
           <Feed.Summary>
             <Feed.User>@{comment.author}</Feed.User>
           </Feed.Summary>
 
-          {this.state.isEditing ? (
+          {isEditing ? (
             <Feed.Extra>
               <Form>
-                <TextArea
-                  value={this.state.newComment}
-                  onChange={this.handleComment}
-                />
+                <TextArea value={newComment} onChange={this.handleComment} />
               </Form>
             </Feed.Extra>
           ) : (
