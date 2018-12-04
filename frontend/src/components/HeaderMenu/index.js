@@ -11,12 +11,10 @@ const HeaderMenu = () => (
     <Menu.Menu position="right">
       <Menu.Item name="testimonials">About</Menu.Item>
 
-      <Menu.Item name="sign-in">Sign-out</Menu.Item>
-
       <Menu.Item>
         <Header as="h6">
           <Icon name="user circle" circular />
-          Udacity Student
+          Guest
         </Header>
       </Menu.Item>
     </Menu.Menu>

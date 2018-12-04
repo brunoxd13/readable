@@ -46,7 +46,7 @@ class Comment extends Component {
   };
 
   render() {
-    const { comment } = this.props;
+    const { comment, authedUser } = this.props;
 
     return (
       <Feed.Event>
@@ -97,16 +97,18 @@ class Comment extends Component {
                     <Button onClick={this.handleEditComment}>Cancel</Button>
                   </Button.Group>
                 ) : (
-                  <Button.Group basic size="mini" floated="right">
-                    <Button
-                      icon="edit outline"
-                      onClick={this.handleEditComment}
-                    />
-                    <Button
-                      icon="trash alternate outline"
-                      onClick={this.handleDeleteComment}
-                    />
-                  </Button.Group>
+                  authedUser === comment.author && (
+                    <Button.Group basic size="mini" floated="right">
+                      <Button
+                        icon="edit outline"
+                        onClick={this.handleEditComment}
+                      />
+                      <Button
+                        icon="trash alternate outline"
+                        onClick={this.handleDeleteComment}
+                      />
+                    </Button.Group>
+                  )
                 )}
               </Grid.Column>
             </Grid>
@@ -117,4 +119,10 @@ class Comment extends Component {
   }
 }
 
-export default connect()(Comment);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser: authedUser
+  };
+}
+
+export default connect(mapStateToProps)(Comment);

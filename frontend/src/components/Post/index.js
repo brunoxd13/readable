@@ -31,7 +31,7 @@ class Post extends Component {
   };
 
   render() {
-    const { post, isOnly } = this.props;
+    const { post, isOnly, authedUser } = this.props;
 
     return (
       <Segment>
@@ -77,21 +77,21 @@ class Post extends Component {
               <Grid>
                 <Grid.Column width={8} floated="left">
                   <div className="post-body-container">
-                    {!isOnly ? (
-                      truncateString(post.body, 75)
-                    ) : (
-                      <Button.Group basic size="mini">
-                        <Button
-                          icon="edit outline"
-                          onClick={this.handleClickEditPost}
-                        />
+                    {!isOnly
+                      ? truncateString(post.body, 75)
+                      : authedUser === post.author && (
+                          <Button.Group basic size="mini">
+                            <Button
+                              icon="edit outline"
+                              onClick={this.handleClickEditPost}
+                            />
 
-                        <Button
-                          icon="trash alternate outline"
-                          onClick={this.handleClickDeletePost}
-                        />
-                      </Button.Group>
-                    )}
+                            <Button
+                              icon="trash alternate outline"
+                              onClick={this.handleClickDeletePost}
+                            />
+                          </Button.Group>
+                        )}
                   </div>
                 </Grid.Column>
 
@@ -119,4 +119,10 @@ class Post extends Component {
   }
 }
 
-export default withRouter(connect()(Post));
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser: authedUser
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(Post));
