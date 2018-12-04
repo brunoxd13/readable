@@ -6,7 +6,8 @@ import {
   TextArea,
   Input,
   Select,
-  Segment
+  Segment,
+  Grid
 } from "semantic-ui-react";
 
 import { handleAddPost, handleUpdatePost } from "../../store/actions/posts";
@@ -37,8 +38,13 @@ class NewPost extends Component {
   };
 
   handleAddPost = () => {
+    const { id, title, body, category } = this.state;
+
+    if (title === "" || body === "" || category === "") {
+      return;
+    }
+
     if (this.state.isEditing) {
-      let { id, title, body, category } = this.state;
       this.props.dispatch(handleUpdatePost(id, title, body, category));
     } else {
       this.props.dispatch(handleAddPost(this.state));
@@ -85,7 +91,18 @@ class NewPost extends Component {
             value={this.state.body}
           />
 
-          <Button onClick={this.handleAddPost}>Submit</Button>
+          <Grid>
+            <Grid.Column width={16}>
+              <Button
+                inverted
+                color="blue"
+                floated="right"
+                onClick={this.handleAddPost}
+              >
+                Submit
+              </Button>
+            </Grid.Column>
+          </Grid>
         </Form>
       </Segment>
     );

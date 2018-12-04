@@ -38,6 +38,10 @@ class Comment extends Component {
   };
 
   handleSaveEditComment = () => {
+    if (this.state.newComment === "") {
+      return;
+    }
+
     this.props.dispatch(
       handleEditComment(this.props.comment.id, this.state.newComment)
     );

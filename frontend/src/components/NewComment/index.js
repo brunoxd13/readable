@@ -17,6 +17,10 @@ class NewComment extends Component {
   };
 
   sendComment = () => {
+    if (this.state.body === "") {
+      return;
+    }
+
     const comment = {
       body: this.state.body,
       author: this.state.author,
