@@ -1,0 +1,21 @@
+{
+  "name": "reddit-clone",
+  "version": "0.0.1",
+  "description": "A server for the Udacity Reddit Clone project for ReactND",
+  "main": "index.js",
+  "keywords": [
+    "udacity",
+    "redux",
+    "readable",
+    "react"
+  ],
+  "author": "David Harris",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^11.2.0",
+    "yarn": "^1.12.3"
+  },
+  "scripts": {
+    "start": "cd api-server && yarn install && node server.js"
+  }
+}
