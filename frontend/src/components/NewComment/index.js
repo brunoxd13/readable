@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleAddComment } from "../../store/actions/comments";
 
@@ -7,6 +8,11 @@ import { Form, TextArea } from "semantic-ui-react";
 import "./styles.css";
 
 class NewComment extends Component {
+  static propTypes = {
+    postId: PropTypes.number.isRequired,
+    authedUser: PropTypes.string.isRequired
+  };
+
   state = {
     body: "",
     author: this.props.authedUser

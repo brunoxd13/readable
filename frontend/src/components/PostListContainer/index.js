@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Header, Icon } from "semantic-ui-react";
 import { orderPost } from "../../service/utils";
@@ -6,6 +7,11 @@ import { orderPost } from "../../service/utils";
 import PostList from "../PostList";
 
 class PostListContainer extends Component {
+  static propTypes = {
+    posts: PropTypes.array.isRequired,
+    sort: PropTypes.object.isRequired
+  };
+
   render() {
     if (Object.keys(this.props.posts).length <= 0) {
       return (

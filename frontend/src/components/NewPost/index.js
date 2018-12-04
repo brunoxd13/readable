@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   Button,
@@ -13,6 +14,11 @@ import {
 import { handleAddPost, handleUpdatePost } from "../../store/actions/posts";
 
 class NewPost extends Component {
+  static propTypes = {
+    categories: PropTypes.object.isRequired,
+    authedUser: PropTypes.string.isRequired
+  };
+
   state = {
     title: "",
     category: "",

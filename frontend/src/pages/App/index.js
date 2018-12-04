@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleInitialData } from "../../store/actions/shared";
 import { CircleArrow as ScrollUpButton } from "react-scroll-up-button";
@@ -10,6 +11,11 @@ import Router from "../../components/Router";
 import "./styles.css";
 
 class App extends Component {
+  static propTypes = {
+    categories: PropTypes.object.isRequired,
+    posts: PropTypes.object.isRequired
+  };
+
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }

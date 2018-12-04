@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Header, Icon } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
 import Post from "../Post";
 import NewComment from "../NewComment";
 import CommentListContainer from "../CommentListContainer";
 
 class PostView extends Component {
+  static propTypes = {
+    post: PropTypes.object.isRequired
+  };
+
   render() {
     const { post } = this.props;
 

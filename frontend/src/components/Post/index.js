@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import { Button, Icon, Item, Segment, Grid } from "semantic-ui-react";
@@ -10,6 +11,12 @@ import { handleVotePost, handleDeletePost } from "../../store/actions/posts";
 import "./styles.css";
 
 class Post extends Component {
+  static propTypes = {
+    post: PropTypes.object.isRequired,
+    isOnly: PropTypes.bool.isRequired,
+    authedUser: PropTypes.string.isRequired
+  };
+
   handleClickUpVote = () => {
     this.props.dispatch(handleVotePost(this.props.post.id, "upVote"));
   };

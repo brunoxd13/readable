@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Feed, Button, Icon, Grid, Form, TextArea } from "semantic-ui-react";
 import { getDateFromTimestamp } from "../../service/utils";
@@ -11,6 +12,11 @@ import {
 import "./style.css";
 
 class Comment extends Component {
+  static propTypes = {
+    comment: PropTypes.object.isRequired,
+    authedUser: PropTypes.string.isRequired
+  };
+
   state = {
     isEditing: false,
     newComment: this.props.comment.body
@@ -53,6 +59,7 @@ class Comment extends Component {
   render() {
     const { comment, authedUser } = this.props;
     const { isEditing, newComment } = this.state;
+
     return (
       <Feed.Event>
         <Feed.Label>

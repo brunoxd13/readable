@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Header, Icon } from "semantic-ui-react";
 
@@ -6,6 +7,11 @@ import { handleComments } from "../../store/actions/comments";
 import CommentList from "../CommentList";
 
 class CommentListContainer extends Component {
+  static propTypes = {
+    comments: PropTypes.object.isRequired,
+    postId: PropTypes.number.isRequired
+  };
+
   componentDidMount() {
     this.props.dispatch(handleComments(this.props.postId));
   }

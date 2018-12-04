@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Feed } from "semantic-ui-react";
 import Comment from "../Comment";
 
@@ -11,5 +12,9 @@ const CommentList = ({ comments }) => (
     ))}
   </Feed>
 );
+
+CommentList.propTypes = {
+  comments: PropTypes.object.isRequired
+};
 
 export default CommentList;

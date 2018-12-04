@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Button, Icon, Input, Menu } from "semantic-ui-react";
 import { sortBy } from "../../store/actions/sort";
@@ -6,6 +7,10 @@ import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../service/utils";
 
 class FloatingMenu extends Component {
+  static propTypes = {
+    categories: PropTypes.object.isRequired
+  };
+
   state = {
     activeCategory: "all",
     activeOrder: "newest"
