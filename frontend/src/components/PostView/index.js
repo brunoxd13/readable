@@ -9,7 +9,7 @@ import CommentListContainer from "../CommentListContainer";
 
 class PostView extends Component {
   static propTypes = {
-    post: PropTypes.object.isRequired
+    post: PropTypes.object
   };
 
   render() {

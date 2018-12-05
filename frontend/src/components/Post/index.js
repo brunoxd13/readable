@@ -14,7 +14,7 @@ class Post extends Component {
   static propTypes = {
     post: PropTypes.object.isRequired,
     isOnly: PropTypes.bool.isRequired,
-    authedUser: PropTypes.string.isRequired
+    authedUser: PropTypes.string
   };
 
   handleClickUpVote = () => {

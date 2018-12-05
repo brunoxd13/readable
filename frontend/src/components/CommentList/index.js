@@ -14,7 +14,7 @@ const CommentList = ({ comments }) => (
 );
 
 CommentList.propTypes = {
-  comments: PropTypes.object.isRequired
+  comments: PropTypes.array.isRequired
 };
 
 export default CommentList;

@@ -8,8 +8,8 @@ import CommentList from "../CommentList";
 
 class CommentListContainer extends Component {
   static propTypes = {
-    comments: PropTypes.object.isRequired,
-    postId: PropTypes.number.isRequired
+    comments: PropTypes.array.isRequired,
+    postId: PropTypes.string.isRequired
   };
 
   componentDidMount() {

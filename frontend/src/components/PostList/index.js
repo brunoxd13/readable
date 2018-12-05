@@ -8,7 +8,7 @@ const PostList = ({ posts }) =>
   });
 
 PostList.propTypes = {
-  posts: PropTypes.object.isRequired
+  posts: PropTypes.array.isRequired
 };
 
 export default PostList;

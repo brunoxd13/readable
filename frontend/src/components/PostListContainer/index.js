@@ -9,7 +9,7 @@ import PostList from "../PostList";
 class PostListContainer extends Component {
   static propTypes = {
     posts: PropTypes.array.isRequired,
-    sort: PropTypes.object.isRequired
+    sort: PropTypes.object
   };
 
   render() {
