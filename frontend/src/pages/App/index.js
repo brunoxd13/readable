@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Dimmer, Loader } from "semantic-ui-react";
+
 import { handleInitialData } from "../../store/actions/shared";
 import { CircleArrow as ScrollUpButton } from "react-scroll-up-button";
 
@@ -21,6 +23,8 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
+
     return (
       <div>
         <HeaderMenu />
@@ -30,7 +34,13 @@ class App extends Component {
           </div>
 
           <div className="post-list-container">
-            <Router />
+            {isLoading ? (
+              <Dimmer active>
+                <Loader size="massive">Loading</Loader>
+              </Dimmer>
+            ) : (
+              <Router />
+            )}
           </div>
         </div>
 
@@ -40,10 +50,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts }) {
+function mapStateToProps({ categories, posts, loading }) {
   return {
     categories: categories,
-    posts: posts
+    posts: posts,
+    isLoading: loading
   };
 }
 
