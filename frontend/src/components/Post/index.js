@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import { Button, Icon, Item, Segment, Grid } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
-
 import { truncateString, getDateFromTimestamp } from "../../service/utils";
 import { handleVotePost, handleDeletePost } from "../../store/actions/posts";
 
@@ -18,15 +18,15 @@ class Post extends Component {
   };
 
   handleClickUpVote = () => {
-    this.props.dispatch(handleVotePost(this.props.post.id, "upVote"));
+    this.props.handleVotePost(this.props.post.id, "upVote");
   };
 
   handleClickDownVote = () => {
-    this.props.dispatch(handleVotePost(this.props.post.id, "downVote"));
+    this.props.handleVotePost(this.props.post.id, "downVote");
   };
 
   handleClickDeletePost = () => {
-    this.props.dispatch(handleDeletePost(this.props.post.id));
+    this.props.handleDeletePost(this.props.post.id);
     this.props.history.push("/");
   };
 
@@ -132,4 +132,12 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(Post));
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ handleVotePost, handleDeletePost }, dispatch);
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Post)
+);

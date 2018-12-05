@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Header, Icon } from "semantic-ui-react";
-
 import { handleComments } from "../../store/actions/comments";
 import CommentList from "../CommentList";
 
@@ -13,7 +13,7 @@ class CommentListContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(handleComments(this.props.postId));
+    this.props.handleComments(this.props.postId);
   }
 
   render() {
@@ -40,5 +40,10 @@ function mapStateToProps({ comments }) {
     })
   };
 }
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ handleComments }, dispatch);
 
-export default connect(mapStateToProps)(CommentListContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CommentListContainer);

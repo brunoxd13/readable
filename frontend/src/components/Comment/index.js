@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Feed, Button, Icon, Grid, Form, TextArea } from "semantic-ui-react";
 import { getDateFromTimestamp } from "../../service/utils";
 import {
@@ -23,16 +24,17 @@ class Comment extends Component {
   };
 
   handleClickUpVote = () => {
-    this.props.dispatch(handleVoteComment(this.props.comment.id, "upVote"));
+    this.props.handleVoteComment(this.props.comment.id, "upVote");
   };
 
   handleClickDownVote = () => {
-    this.props.dispatch(handleVoteComment(this.props.comment.id, "downVote"));
+    this.props.handleVoteComment(this.props.comment.id, "downVote");
   };
 
   handleDeleteComment = () => {
-    this.props.dispatch(
-      handleDeleteComment(this.props.comment.id, this.props.comment.parentId)
+    this.props.handleDeleteComment(
+      this.props.comment.id,
+      this.props.comment.parentId
     );
   };
 
@@ -49,9 +51,7 @@ class Comment extends Component {
       return;
     }
 
-    this.props.dispatch(
-      handleEditComment(this.props.comment.id, this.state.newComment)
-    );
+    this.props.handleEditComment(this.props.comment.id, this.state.newComment);
 
     this.handleEditComment();
   };
@@ -134,4 +134,13 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(Comment);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    { handleVoteComment, handleDeleteComment, handleEditComment },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Comment);

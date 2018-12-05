@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Dimmer, Loader } from "semantic-ui-react";
 
 import { handleInitialData } from "../../store/actions/shared";
@@ -19,7 +20,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.handleInitialData();
   }
 
   render() {
@@ -58,4 +59,10 @@ function mapStateToProps({ categories, posts, loading }) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ handleInitialData }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

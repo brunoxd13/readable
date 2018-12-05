@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { handleAddComment } from "../../store/actions/comments";
-
 import { Form, TextArea } from "semantic-ui-react";
 
 import "./styles.css";
@@ -33,7 +33,7 @@ class NewComment extends Component {
       parentId: this.props.postId
     };
 
-    this.props.dispatch(handleAddComment(comment));
+    this.props.handleAddComment(comment);
     this.setState({ body: "" });
   };
 
@@ -70,4 +70,10 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(NewComment);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ handleAddComment }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewComment);

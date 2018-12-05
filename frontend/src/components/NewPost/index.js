@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import {
   Button,
   Form,
@@ -51,9 +52,9 @@ class NewPost extends Component {
     }
 
     if (this.state.isEditing) {
-      this.props.dispatch(handleUpdatePost(id, title, body, category));
+      this.props.handleUpdatePost(id, title, body, category);
     } else {
-      this.props.dispatch(handleAddPost(this.state));
+      this.props.handleAddPost(this.state);
     }
 
     this.props.history.push("/");
@@ -122,4 +123,10 @@ function mapStateToProps({ categories, authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(NewPost);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ handleAddPost, handleUpdatePost }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewPost);
