@@ -9,7 +9,7 @@ import "./styles.css";
 
 class NewComment extends Component {
   static propTypes = {
-    postId: PropTypes.number.isRequired,
+    postId: PropTypes.string,
     authedUser: PropTypes.string.isRequired
   };
 
