@@ -1,4 +1,5 @@
 [![REACT nanodegree](https://img.shields.io/badge/udacity-REACTND-02b3e4.svg?style=flat)](https://www.udacity.com/course/react-nanodegree--nd019)
+[![BCH compliance](https://bettercodehub.com/edge/badge/brunoxd13/readable?branch=master)](https://bettercodehub.com/)
 
 # Readable Front End
 
