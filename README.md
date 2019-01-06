@@ -1,5 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2271ee5c3e794a2c9180065d4da75704)](https://app.codacy.com/app/brunoxd13/readable?utm_source=github.com&utm_medium=referral&utm_content=brunoxd13/readable&utm_campaign=Badge_Grade_Dashboard)
 [![REACT nanodegree](https://img.shields.io/badge/udacity-REACTND-02b3e4.svg?style=flat)](https://www.udacity.com/course/react-nanodegree--nd019)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2271ee5c3e794a2c9180065d4da75704)](https://app.codacy.com/app/brunoxd13/readable?utm_source=github.com&utm_medium=referral&utm_content=brunoxd13/readable&utm_campaign=Badge_Grade_Dashboard)
 [![BCH compliance](https://bettercodehub.com/edge/badge/brunoxd13/readable?branch=master)](https://bettercodehub.com/)
 
 # Readable Front End
